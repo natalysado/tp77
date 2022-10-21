@@ -1,0 +1,33 @@
+CREATE DATABASE TP77
+  CHARACTER SET DEFAULT
+  COLLATE DEFAULT;
+  
+ CREATE TABLE tiendas (
+  id                int NOT NULL PRIMARY KEY,
+  nombre_comercial  varchar(30),
+  tipo              int,
+  direccion         varchar(30),
+  cp                int,
+  poblacion         int,
+  lat               float,
+  lng               float
+) ENGINE = InnoDB;
+
+INSERT INTO tiendas (id, nombre_comercial, tipo, direccion, cp, poblacion, lat, lng) VALUES
+  (8, 'Boston', 1, 'calle de fuencarral, 104', 7600, 1, -38.0037, -57.5517),
+  (9, 'Media 22', 1, 'castello, 109', 7600, 1, -38.0054, -57.5546);
+
+SELECT * FROM `tiendas` WHERE `tiendas`.`direccion` LIKE '%castello%';
+
+SELECT * FROM `tiendas` WHERE `tiendas`.`cp` = 7600;
+SELECT * FROM `tiendas` WHERE `tiendas`.`poblacion` = 1;
+
+SELECT * FROM `tiendas` WHERE `tiendas`.`tipo` = 1;
+
+SELECT MAX(`tiendas`.`lat`) AS LargestPrice FROM `tiendas`;
+
+SELECT MIN(`tiendas`.`lng`) AS LargestPrice FROM `tiendas`;
+
+UPDATE `tiendas` SET `nombre_comercial` = "%ochoa%" WHERE `nombre_comercial` = "%Boston%";
+UPDATE `tiendas` SET `nombre_comercial` = "%-38.00001%" WHERE `nombre_comercial` = "%Wallace%";
+UPDATE `tiendas` SET `nombre_comercial` = "%EEM 22%" WHERE `nombre_comercial` = "%Media 22%";
